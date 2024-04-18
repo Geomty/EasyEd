@@ -30,7 +30,7 @@ const { WebSocketServer } = require("ws");
 const sockserver = new WebSocketServer({ port: 443 });
 const spawnChildProcess = require("./child_process");
 
-sockserver.on("connection", ws => {
+sockserver.on("connection", async ws => {
 	console.log("New client connected!");
 	ws.send("Connection established!");
 	ws.on("close", () => console.log("Client has disconnected!"));

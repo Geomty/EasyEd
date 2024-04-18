@@ -2,43 +2,53 @@ const logger = require("./logger");
 const getVideos = require("./api.js");
 const getDefaultKeywords = require("./keyword_handler.js");
 
-function handleClient(client) {
+async function handleClient(client) {
     let keywords = getDefaultKeywords("default");
-    let videos = [];
-    let data = getVideos(keywords);
+    let data = await getVideos(keywords);
     if (data.error) {
         logger(data.error);
-        client.send(data.error);
         // Return statement to prevent further code execution
-        return client.close();
+        return client.send(`ERROR: ${data.error}`);
     }
     let next = data.next;
-    videos.extend(data.ids);
+    let videos = data.ids;
 
     client.send("child process running");
-    client.on("message", message => {
+    client.on("message", async message1 => {
+        message = message1.toString();
         if (message == "get video") {
-            //client.send("dQw4w9WgXcQ");
             let video = videos.pop(0);
-            console.log(`Sending video id ${video} to client`);
+            console.log(`Sending video id ${video} to client`); // TODO remove
             client.send(video);
 
-            if (videos.length == 0) {
-                data = getVideos(next);
+            if (videos.length <= 1) {
+                data = await getVideos(keywords, next);
                 if (data.error) {
-                    client.send(data.error);
-                    return client.close();
+                    logger(data.error);
+                    return client.send(`ERROR: ${data.error}`);
                 }
                 next = data.next;
-                video.extend(data.ids);
+                videos = videos.concat(data.ids);
             }
-        } else if (message.split(" ")[0] == "keywordsDefault") {
+        } else if (message.split(" ")[0] == "keyword_category") {
+            console.log(`changing keyword: ${message}`);
             keywords = getDefaultKeywords(message.split(" ")[1]);
+            data = await getVideos(keywords);
+            if (data.error) {
+                logger(data.error);
+                return client.send(`ERROR: ${data.error}`);
+            }
+            next = data.next;
+            videos = data.ids;
+
+            let video = videos.pop(0);
+            console.log(`Sending video id ${video} to client`); // TODO remove
+            client.send(video);
         } else if (message.split(" ") == "keywords") {
-            keywords = message.split(" ") // TODO
+            keywords = message.split(" ").slice(1, -1);
         } else {
             logger(`Invalid message from client: ${data}`);
-            client.send("Invalid message");
+            client.send("ERROR: Invalid message");
         }
     })
 }

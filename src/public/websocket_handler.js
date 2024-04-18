@@ -1,33 +1,43 @@
 const ipAddress = window.location.hostname;
 console.log(ipAddress);
 const ws = new WebSocket('ws://'+ipAddress+':443/');
-ws.addEventListener("open", () => {
-    console.log("We are connected");
-    sendMessage();
+ws.addEventListener("open", async () => {
+    console.log("Websocket connected");
+    for (let i = 0; i < 2; i++) {
+        console.log(await waitForMessage());
+    }
+    await displayVideo();
 });
 
-ws.onmessage = event => {
-    console.log(event.data);
-};
+// ws.onmessage = event => {
+//     console.log(event.data); // TODO remove
+// };
 
-function sendMessage(message, event) {
-    let inputMessage = "get video";
-    ws.send(inputMessage);
+async function sendMessage(message, event) {
+    await ws.send(message);
     event.preventDefault();
 }
 
-async function waitForMessage() {
-    return await new Promise(resolve => {
+function waitForMessage() {
+    return new Promise(resolve => {
         ws.onmessage = event => {
             resolve(event.data);
         };
-    });;
+    });
 }
 
 async function nextVideo(event) {
-    sendMessage(category, event);
-    message = await waitForMessage();
-    if (message.split(" ").length > 1) {
-        // show error message on ui
+    await sendMessage("get video", event);
+    const message = await waitForMessage();
+    if (message.startsWith("ERROR")) {
+        message = await waitForMessage();
     }
+    if (message.startsWith("ERROR")) {
+        console.log(message);
+    }
+    return message;
+}
+
+function setKeywords(keywordCategory, event) {
+    sendMessage("keyword_category " + keywordCategory, event);
 }

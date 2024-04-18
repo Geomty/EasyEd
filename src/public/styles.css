@@ -1,0 +1,147 @@
+body, html {
+    background-color: #111c27;
+    margin: 0;
+    font-family: 'Nunito';
+}
+
+.ytvideo {
+    height: 90vh;
+    width: 51vh;
+    border-width: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sidebar {
+    height: 96vh;
+    width: 12%;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #2f363d;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    font-family: 'Nunito';
+}
+
+.sidebar:hover {
+    opacity: 1;
+}
+
+.logo:hover + .sidebar {
+    opacity: 1;
+}
+
+.logo-fake {
+    height: 12vh;
+}
+
+.logo {
+    position: absolute;
+    padding-top: 2vh;
+    padding-left: 2vh;
+    width: 12%;
+    z-index: 1;
+}
+
+.btnContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}
+
+.btn {
+    height: fit-content;
+    width: fit-content;
+    padding: 0.5rem;
+    background-color: rgb(74, 32, 99);
+    border-color: transparent;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 2.5vh;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 2px 2px 7px rgb(255, 0, 234);
+}
+
+.btn:hover {
+    background-color: rgb(40, 25, 58);
+}
+
+.active {
+    background-color: rgb(61, 61, 61);
+    color: white;
+}
+
+.switch {
+    display: inline-block;
+    position: relative;
+    transform: translate(10%, -40%);
+    width: 7vh;
+    height: 4vh;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #b4b4b4;
+    transition: .4s;
+    border-radius: 4vh;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 3vh;
+    width: 3vh;
+    left: 0.5vh;
+    bottom: 0.5vh;
+    background-color: rgb(31, 0, 0);
+    transition: .4s;
+    border-radius: 4vh;
+}
+
+input:checked+.slider {
+    background-color: rgb(226, 160, 37);
+}
+
+input:checked+.slider:before {
+    transform: translateX(3vh);
+}
+
+#counter {
+    background-color: #2f363d;
+    color: white;
+    top: 1vh;
+    right: 5vh;
+    height: fit-content;
+    width: fit-content;
+    padding: 2vh;
+    font-size: 5vh;
+    position: absolute;
+    border-radius: 1vh;
+}
+
+#copyright{
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 2vh;
+    position: absolute;
+    bottom: -1.5ch;
+    right: 0;
+    padding-right: 5px;
+    padding-bottom: 3px;
+}

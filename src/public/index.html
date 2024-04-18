@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 12px;font-family: Arial, Helvetica, Verdana, sans-serif">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="todo">
+        <meta name="description" content="TODO">
         <meta name="og:title" content="EasyEd">
-        <meta name="og:description" content="todo">
-        <style src="style.css"></style>
+        <meta name="og:description" content="TODO">
         <title>EasyEd</title>
+        <link rel="stylesheet" href="styles.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     </head>
     <body>
-        <iframe class="video" src="https://www.youtube.com/embed/6GzHPS0rEgc" autoplay="1" disablekb="1" loop="1" playsinline="1"></iframe>
-        
+        <img class="logo" src="/logo.png"></img>
         <div class="sidebar">
-            <button class="sidebtn">Math</button>
-            <button class="sidebtn">Science</button>
-            <button class="sidebtn">Arts</button>
-            <button class="sidebtn">Social Studies</button>
-            <button class="sidebtn">Language</button>      
+            <div class="logo-fake"></div>
+            <div class="btnContainer">
+                <button class="btn">General</button>
+                <button class="btn">Math</button>
+                <button class="btn">Science</button>
+                <button class="btn">Arts</button>
+                <button class="btn">Social Studies</button>
+                <button class="btn">Language</button>
+            </div>
+            <div class="btnContainer">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
         </div>
-        
-        <script src="script.js"></script>
-        <script src="websocket_handler.js"></script>
+        <iframe class="ytvideo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <div><p id="counter">0</p></div>
+    <p id="copyright">YRDucks Copyright 2024</p>
+    <script src="script.js"></script>
+    <script src="websocket_handler.js"></script>
     </body>
 </html>
