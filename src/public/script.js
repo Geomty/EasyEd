@@ -5,6 +5,9 @@ const params = new URLSearchParams(Object.entries({
   playsinline: 1
 }));
 
+var count = -1;
+var counter = document.getElementById("counter");
+
 async function displayVideo(event = new Event("keypress")) {
   const id = await nextVideo(event);
   if (id.startsWith("ERROR")) {
@@ -13,24 +16,21 @@ async function displayVideo(event = new Event("keypress")) {
   } else {
     document.getElementsByClassName("ytvideo")[0].src = `https://www.youtube.com/embed/${id}?playlist=${id}&${params}`;
   }
+  counter.textContent = ++count;
 }
-
-var counter = 0;
-var counterDiv = document.getElementById("counter");
 
 document.getElementsByTagName("body")[0].addEventListener("keydown", async event => {
   if (event.key == "ArrowDown" || event.key == "ArrowRight") {
     await displayVideo(event);
-    counterDiv.textContent = ++counter;
   }
 })
 
 var btnContainer = document.getElementsByClassName("li");
 var btns = Array.prototype.slice.call(document.getElementsByClassName("btn"));
-var categories = ["default", "math", "science", "arts", "social studies", "language"];
+var categories = ["default", "math", "science", "arts", "social", "language"];
 
 for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", event => {
+  btns[i].addEventListener("click", async event => {
     var current = document.getElementsByClassName("active");
     if (current.length > 0) {
       current[0].className = current[0].className.replace(" active", "");
@@ -38,10 +38,11 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
     
     setKeywords(categories[btns.indexOf(event.currentTarget)], event);
+    await waitForMessage();
+    displayVideo(event);
   });
 }
 
-var counter = document.getElementById("counter");
 counter.style.opacity = 1;
 document.getElementById("sliderInput").addEventListener("click", () => {
   toggle();
