@@ -1,2 +1,2 @@
 # EasyEd
-[Product video](https://www.youtube.com/watch?v=oHg5SJYRHA0)
+A web-based application that filters results from YouTube Shorts for educational content, mainly used for avoiding the brainrot prevalent on the platform.
