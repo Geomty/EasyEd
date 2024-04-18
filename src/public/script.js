@@ -40,3 +40,17 @@ for (var i = 0; i < btns.length; i++) {
     setKeywords(categories[btns.indexOf(event.currentTarget)], event);
   });
 }
+
+var counter = document.getElementById("counter");
+counter.style.opacity = 1;
+document.getElementById("sliderInput").addEventListener("click", () => {
+  toggle();
+});
+function toggle() {
+  if (counter.style.opacity == 1) {
+    counter.style.opacity = 0;
+  } 
+  else {
+    counter.style.opacity = 1;
+  }
+}

@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="TODO">
+        <meta name="description" content="A web-based application that filters results from YouTube Shorts for educational content, mainly used for avoiding the brainrot prevalent on the platform.">
         <meta name="og:title" content="EasyEd">
-        <meta name="og:description" content="TODO">
+        <meta name="og:description" content="A web-based application that filters results from YouTube Shorts for educational content, mainly used for avoiding the brainrot prevalent on the platform.">
         <title>EasyEd</title>
+        <link rel="icon" href="logo.png">
         <link rel="stylesheet" href="styles.css"/>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
@@ -18,22 +19,24 @@
             <div class="btnContainer">
                 <button class="btn">General</button>
                 <button class="btn">Math</button>
-                <button class="btn">Science</button>
+                <button class="btn">Science & Tech</button>
                 <button class="btn">Arts</button>
                 <button class="btn">Social Studies</button>
                 <button class="btn">Language</button>
-            </div>
+        </div>
             <div class="btnContainer">
                 <label class="switch">
-                    <input type="checkbox">
+                    <input id="sliderInput" onclick="() => toggle()" type="checkbox" checked>
                     <span class="slider round"></span>
                 </label>
             </div>
+            <p id="switch-label">Show <br> Counter</p>
         </div>
         <iframe class="ytvideo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
-    <div><p id="counter">0</p></div>
+    <div id="toggleSwitch"><p id="counter">0</p></div>
+    
     <p id="copyright">YRDucks Copyright 2024</p>
     <script src="script.js"></script>
     <script src="websocket_handler.js"></script>

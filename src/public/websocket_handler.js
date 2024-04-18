@@ -9,10 +9,6 @@ ws.addEventListener("open", async () => {
     await displayVideo();
 });
 
-// ws.onmessage = event => {
-//     console.log(event.data); // TODO remove
-// };
-
 async function sendMessage(message, event) {
     await ws.send(message);
     event.preventDefault();

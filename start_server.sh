@@ -1,4 +1,4 @@
 #!/bin/bash
-echo "Starting Server..."
+echo "Starting server..."
 node .
 read -p "Press [Enter] key to continue..."

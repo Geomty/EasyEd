@@ -1,7 +1,6 @@
 body, html {
     background-color: #111c27;
     margin: 0;
-    font-family: 'Nunito';
 }
 
 .ytvideo {
@@ -24,7 +23,6 @@ body, html {
     background-color: #2f363d;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    font-family: 'Nunito';
 }
 
 .sidebar:hover {
@@ -45,6 +43,7 @@ body, html {
     padding-left: 2vh;
     width: 12%;
     z-index: 1;
+    opacity: 0.5;
 }
 
 .btnContainer {
@@ -66,6 +65,7 @@ body, html {
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     box-shadow: 2px 2px 7px rgb(255, 0, 234);
+    font-family: 'Nunito';
 }
 
 .btn:hover {
@@ -98,7 +98,7 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #b4b4b4;
+    background-color: rgb(166, 149, 176);
     transition: .4s;
     border-radius: 4vh;
 }
@@ -110,13 +110,13 @@ body, html {
     width: 3vh;
     left: 0.5vh;
     bottom: 0.5vh;
-    background-color: rgb(31, 0, 0);
+    background-color: rgb(200, 0, 184);
     transition: .4s;
     border-radius: 4vh;
 }
 
 input:checked+.slider {
-    background-color: rgb(226, 160, 37);
+    background-color: rgb(99, 18, 146);
 }
 
 input:checked+.slider:before {
@@ -134,6 +134,8 @@ input:checked+.slider:before {
     font-size: 5vh;
     position: absolute;
     border-radius: 1vh;
+    font-family: "Nunito";
+    transition: opacity 0.2s ease-in-out;
 }
 
 #copyright{
@@ -144,4 +146,15 @@ input:checked+.slider:before {
     right: 0;
     padding-right: 5px;
     padding-bottom: 3px;
+    font-family: "Nunito";
+}
+#switch-label{
+    color: rgb(255, 255, 255);
+    font-size: 2.5vh;
+    position: absolute;
+    bottom: -0.5ch;
+    left: 6.5vw;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    font-family: "Nunito";
 }
