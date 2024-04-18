@@ -1,0 +1,34 @@
+{
+    "default": [ 
+        "education",
+        "learning",
+        "school",
+        "studying"
+    ],
+    "math": [
+        "calculus",
+        "math",
+        "function",
+        "mathematic"
+    ],
+    "language": [
+        "language",
+        "writing",
+        "reading",
+        "literature",
+        "author",
+        "book"
+    ],
+    "science": [
+        "science",
+        "physic",
+        "biology",
+        "chemistry"
+    ],
+    "social science": [
+        "social science",
+        "history",
+        "geography",
+        "psychology"
+    ]
+}

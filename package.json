@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/Geomty/YRHacks-2024#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "node-fetch": "^3.3.2",
+    "node-fetch-commonjs": "^3.3.2",
+    "websocket": "^1.0.34",
     "ws": "^8.16.0"
   }
 }

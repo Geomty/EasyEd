@@ -14,7 +14,7 @@ for (let interface in networkInterfaces) {
         }
     }
 }
-logger(`Ip address of server: ${ipAddress}`);
+logger(`IP address of server: ${ipAddress}`);
 
 // Web page
 const path = require("path");
@@ -28,37 +28,15 @@ webserver.listen(3000, () => console.log("Listening on 3000"));
 // Web socket
 const { WebSocketServer } = require("ws");
 const sockserver = new WebSocketServer({ port: 443 });
+const spawnChildProcess = require("./child_process");
 
-// Child proccess import
-const { spawn } = require("child_process");
-// Main script (one spawned per user)
-const script = "child_process.js";
-
-function handleDataFromClient(data, client) {
-    console.log(data);
-    client.send("yay! message");
-}
-
-// Self explanatory
-function sendDataToEachClient(data) {
-	console.log(`Distributing message: ${data}`);
-	logger(`Distributing message: ${data}`);
-	sockserver.clients.forEach(client => {
-		client.send(`${data}`);
-	});
-}
-
-// For the actual websocket stuff
 sockserver.on("connection", ws => {
 	console.log("New client connected!");
 	ws.send("Connection established!");
 	ws.on("close", () => console.log("Client has disconnected!"));
-	/*ws.on("message", data => {
-		handleDataFromClient(data.toString(), ws);
-	})*/
 	// This is confusing to read - it is two words "on error"
-	ws.onerror = function () {
+	ws.onerror = () => {
 		console.log("websocket error");
 	}
-    let subprocess = spawn("javascript", [script, ws]);
+    spawnChildProcess(ws);
 });

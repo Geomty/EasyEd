@@ -1,9 +1,62 @@
-
 body, html {
     padding: 1;
     margin: 1;
-    background-color: rgba(255, 255, 255, 0.638);
+    background-color: rgb(214, 214, 214);
 }
 
+.video {
+    height: 90vh;
+    width: 51vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
-  
+.sidebar{
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    height: 90vh;
+    width: 51vh;
+}
+
+.btn-group .sidebtn{
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    width: 80px;
+    display: block;
+}
+
+.btn-group .button:not(:last-child) {
+    border-bottom: none;
+    }
+
+.sidedrop{
+    position: relative;
+    display: inline-block;
+  }
+
+.sidedrop-content {
+    display: none;
+    position: relative;
+    background-color: #ffeded;
+    padding: 12px;
+}
+
+.sidedrop-content:hover {
+    animation: mymove 5s;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+}
+
